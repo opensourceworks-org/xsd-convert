@@ -1,5 +1,8 @@
 use leptos::prelude::*;
+use leptos::wasm_bindgen::JsValue;
 use wasm_bindgen_futures::spawn_local;
+use leptos::wasm_bindgen::JsCast;
+use leptos::html::Div;
 
 #[component]
 pub fn InputTextArea(
@@ -20,10 +23,48 @@ pub fn InputTextArea(
 pub fn OutputTextArea(
     output_text: ReadSignal<String>,
 ) -> impl IntoView {
+    let language = "json";
+    let highlighted = create_memo(move |_| {
+        let raw_code = output_text.get();
+        let window = web_sys::window().expect("no global window exists");
+        // Get the global Prism object.
+        let prism = js_sys::Reflect::get(&window, &JsValue::from_str("Prism"))
+            .expect("Prism not found");
+        // Get and cast the "highlight" property to a Function.
+        let highlight_fn = js_sys::Reflect::get(&prism, &JsValue::from_str("highlight"))
+            .expect("Prism.highlight not found")
+            .dyn_into::<js_sys::Function>()
+            .expect("Prism.highlight is not a function");
+
+        let args = js_sys::Array::new();
+        args.push(&JsValue::from_str(&raw_code));
+        // Get the language grammar from Prism.languages.
+        let languages = js_sys::Reflect::get(&prism, &JsValue::from_str("languages"))
+            .expect("Prism.languages not found");
+        let grammar = js_sys::Reflect::get(&languages, &JsValue::from_str(&language))
+            .expect("grammar not found for language");
+        args.push(&grammar);
+        args.push(&JsValue::from_str(&language));
+
+        let result = highlight_fn
+            .apply(&prism, &args)
+            .expect("highlight.apply failed");
+        result.as_string().unwrap_or(raw_code)
+    });
     view! {
         <div style="position: relative; flex: 1; margin: 10px; max-height: 80vh;">
+            <pre style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 0; background: transparent;
+                        text-align: left; overflow-y: scroll; padding: 10px;"
+                        >
+                <code style="white-space: pre-wrap; word-wrap: break-word;"
+                      class=format!("language-{}", language)
+                      inner_html= move || highlighted.get()
+
+                ></code>
+            </pre>
             <textarea
-                style="width: 100%; height: 100%;"
+                style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;
+                        z-index: 1;"
                 readonly
                 prop:value=output_text
                 placeholder="Transformed schema will appear here..."
@@ -39,6 +80,7 @@ pub fn OutputTextArea(
                     padding: 2px;
                     margin-top: 5px;
                     margin-right: 5px;
+                    z-index: 100;
                 "
                 on:click=move |_| {
                     let text = output_text.get();

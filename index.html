@@ -4,6 +4,7 @@
 <head>
   <!-- Add a plain CSS file: see https://trunkrs.dev/assets/#css -->
   <!-- If using Tailwind with Leptos CSR, see https://trunkrs.dev/assets/#tailwind instead-->
+
   <link data-trunk rel="scss" href="public/styles.scss" />
 
   <!-- Include favicon in dist output: see https://trunkrs.dev/assets/#icon -->
@@ -13,9 +14,15 @@
   <link data-trunk rel="rust" data-wasm-opt="z" data-weak-refs />
 
   <link data-trunk rel="copy-dir" href="public/img"/>
+  <link data-trunk rel="copy-dir" href="public/css"/>
+  <link data-trunk rel="copy-dir" href="public/js"/>
+  <link rel="stylesheet" href="css/prism.css" />
+  <script async defer src="js/prism.js" ></script>
 
 </head>
 
-<body></body>
+<body>
+
+</body>
 
 </html>
