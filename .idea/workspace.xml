@@ -7,7 +7,20 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0afd15aa-a2ec-42cf-b984-5652dc388f1a" name="Changes" comment="" />
+    <list default="true" id="0afd15aa-a2ec-42cf-b984-5652dc388f1a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/file_input.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/textarea.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/top_bar.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/transform_controls.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transform/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/transform/transform.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/counter_btn.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,20 +47,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.rust.reset.selective.auto.import&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jeroen/projects/testleptos/xsd-convert&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
-    &quot;org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon&quot;: &quot;&quot;,
-    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.rust.reset.selective.auto.import": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/jeroen/projects/xsd-convert",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
+    "org.rust.first.attach.projects": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Cargo.Run xsd-convert">
     <configuration name="Run xsd-convert" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value="run --package xsd-convert --bin xsd-convert" />
@@ -97,10 +110,22 @@
       <updated>1739255702363</updated>
       <workItem from="1739255703410" duration="2127000" />
       <workItem from="1739290730282" duration="18397000" />
+      <workItem from="1739352400046" duration="14347000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

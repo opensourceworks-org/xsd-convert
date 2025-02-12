@@ -50,3 +50,55 @@ button {
   text-align: center;
   margin: 2rem;
 }
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 1000;
+  font-family: 'sans-serif';
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.1rem;
+  font-family: monospace;
+  color: #fff;
+}
+
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.text-area-container {
+  flex: 1;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: flex;
+}
+
+.footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background:  #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
