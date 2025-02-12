@@ -1,9 +1,13 @@
 # **<xsd ⚡> xsd-convert**
-
 running at [https://xsd-convert.com](https://xsd-convert.com)
 
 ## Introduction
-This is an example application of the [yaxp](https://github.com/opensourceworks-org/yaxp) crate.
+
+ **<yaxp ⚡> Yet Another XSD Parser**
+
+> **🏃 this is a running example of the  [<yaxp ⚡> Yet Another XSD Parser](https://github.com/opensourceworks-org/yaxp/blob/main/README.md) project **    
+>[<xsd ⚡> convert](https://xsd-convert.com)
+
 
 Takes in an xsd schema and tranforms to arrow, avro, duckdb, json, json representation of spark schema, jsonschema, polars.  WIP: pandas and protobuf.
 
@@ -68,3 +72,13 @@ You'll need a few things to get going.  And an additional step if you're on Appl
     ```bash
     trunk build --release
     ```
+   
+
+## TODO
+- [x] Input from file
+- [x] Copy to clipboard icon 
+- [ ] pandas and protobuf
+- [ ] Syntax highlighting
+- [ ] Input validation
+- [ ] Save output to file
+- 
