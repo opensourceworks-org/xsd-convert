@@ -3,9 +3,7 @@ running at [https://xsd-convert.com](https://xsd-convert.com)
 
 ## Introduction
 
- **<yaxp ⚡> Yet Another XSD Parser**
-
-> **🏃 this is a running example of the  [<yaxp ⚡> Yet Another XSD Parser](https://github.com/opensourceworks-org/yaxp/blob/main/README.md) project **    
+> **🏃 this is a running example of the  [<yaxp ⚡> Yet Another XSD Parser](https://github.com/opensourceworks-org/yaxp/blob/main/README.md) project**    
 >[<xsd ⚡> convert](https://xsd-convert.com)
 
 
