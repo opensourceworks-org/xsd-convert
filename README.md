@@ -51,7 +51,9 @@ You'll need a few things to get going.  And an additional step if you're on Appl
     ```bash
     trunk serve
     ```
-    Then open your browser to http://localhost:3000.  You can also use the --open flag to open the browser automatically.
+    Then open your browser to http://localhost:3000 (see the [Trunk.toml](Trunk.toml) file to modify and more options).  
+
+   You can also use the --open flag to open the browser automatically.
 
    ```
    trunk serve --open
