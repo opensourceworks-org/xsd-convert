@@ -11,7 +11,7 @@ pub fn InputTextArea(
             style="flex: 1; margin: 10px; max-height: 80vh;"
             on:input=move |ev| on_input(event_target_value(&ev))
             prop:value=input_text
-            placeholder="Enter valid xsd content here..."
+            placeholder="Paste here or choose a local file with valid xsd content ..."
         ></textarea>
     }
 }

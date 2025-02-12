@@ -23,7 +23,9 @@ pub fn TransformControls(
                 <option value="duckdb">{"DuckDB"}</option>
                 <option value="json">{"JSON"}</option>
                 <option value="jsonschema">{"JSON-Schema"}</option>
+                <option value="pandas" disabled>{"Pandas (WIP)"}</option>
                 <option value="polars">{"Polars"}</option>
+                <option value="protobuf" disabled>{"Protobuf (WIP)"}</option>
                 <option value="spark">{"Spark"}</option>
             </select>
             <button
