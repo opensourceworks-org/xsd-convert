@@ -24,6 +24,7 @@ pub fn TransformControls(
                 <option value="json">{"JSON"}</option>
                 <option value="jsonschema">{"JSON-Schema"}</option>
                 <option value="pandas" disabled>{"Pandas (WIP)"}</option>
+                <option value="parquet" disabled>{"Parquet (analysis)"}</option>
                 <option value="polars">{"Polars"}</option>
                 <option value="protobuf" disabled>{"Protobuf (WIP)"}</option>
                 <option value="spark">{"Spark"}</option>
