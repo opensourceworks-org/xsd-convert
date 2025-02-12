@@ -45,3 +45,21 @@ You'll need a few things to get going.  And an additional step if you're on Appl
    export PATH=/opt/homebrew/opt/llvm/bin:$PATH
    ```
    
+
+5. Run the thing
+
+    ```bash
+    trunk serve
+    ```
+    Then open your browser to http://localhost:3000.  You can also use the --open flag to open the browser automatically.
+
+   ```
+   trunk serve --open
+   ```
+   
+## Building for production
+1. Build the thing
+
+    ```bash
+    trunk build --release
+    ```
