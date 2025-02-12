@@ -1,6 +1,6 @@
 # **<xsd ⚡> xsd-convert**
 
-running at [https://xsd-convert](https://xsd-convert.com)
+running at [https://xsd-convert.com](https://xsd-convert.com)
 
 ## Introduction
 This is an example application of the [yaxp](https://github.com/opensourceworks-org/yaxp) crate.
