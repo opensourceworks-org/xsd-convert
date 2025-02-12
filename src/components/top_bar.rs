@@ -19,11 +19,11 @@ pub fn TopBar() -> impl IntoView {
                     href="https://pypi.org/project/pyaxp/"
                     target="_blank"
                     style="color: inherit; text-decoration: none;"
-                    title="PyPI"
+                    title="pyaxp"
                 >
                     <img
                         src="/img/python.svg"
-                        alt="Python Logo"
+                        alt="PyYaxp"
                         style="height: 24px; width: auto;"
                     />
                 </a>
@@ -36,7 +36,7 @@ pub fn TopBar() -> impl IntoView {
                 >
                     <img
                         src="/img/rust.svg"
-                        alt="Rust Logo"
+                        alt="yaxp-common"
                         style="height: 24px; width: auto;"
                     />
                 </a>
