@@ -80,3 +80,4 @@ You'll need a few things to get going.  And an additional step if you're on Appl
 - [ ] Input validation
 - [ ] Save output to file
 - [ ] timestamp overrides for timezone/unit (ms, µs, ns)
+- [ ] option to lowercase column names
