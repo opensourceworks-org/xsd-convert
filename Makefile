@@ -21,4 +21,5 @@ build:
 
 
 release:
-	
+	@curl -L -o build.zip https://github.com/opensourceworks-org/xsd-convert/releases/download/latest/build.zip
+	@unzip build.zip -d /container_storage/openresty/var/www/xsd-convert.com/app/

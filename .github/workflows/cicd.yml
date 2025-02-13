@@ -31,7 +31,7 @@ jobs:
           
       - name: zip build
         run: |
-          zip -r build.zip dist
+          cd dist && zip -r build.zip .
 
       - name: Release
         uses: softprops/action-gh-release@v2
