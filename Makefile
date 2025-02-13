@@ -26,4 +26,5 @@ release:
 	@unzip build.zip -d /container_storage/openresty/var/www/xsd-convert.com/app/
 
 latest:
-	git 
+	git tag -f latest -m "chore: release latest"
+	git push origin latest --force
