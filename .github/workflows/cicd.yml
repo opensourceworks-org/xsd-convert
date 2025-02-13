@@ -1,0 +1,58 @@
+name: Deploy on Main Merge
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Install trunk & wasm toolchain
+        run: |
+            cargo install --locked trunk
+            rustup target add wasm32-unknown-unknown
+
+      - name: Build
+        run: |
+          trunk build --release
+          
+      - name: zip build
+        run: |
+          zip -r build.zip dist
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        # if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build.zip
+          token: ${{ secrets.GH_API_TOKEN }}
+
+
+      - name: Trigger deployment
+        run: |
+          response=$(curl -X POST https://deployer.opensourceworks.org/api/v1/deploy \
+               -H "X-Deploy-Token: ${{ secrets.DEPLOY_TOKEN }}" \
+               -d '{"name": "xsd-convert"}' \
+               -s -o response.txt -w "%{http_code}") 
+          
+          if [ "$response" -ne 200 ]; then
+            echo "Deployment failed with status code: $response"
+            echo "Response body: $(cat response.txt)"
+            exit 1
+          else
+            echo "Deployment succeeded with status code: $response"
+            cat response.txt
+          fi
