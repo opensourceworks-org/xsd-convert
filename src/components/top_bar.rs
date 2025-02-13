@@ -10,7 +10,7 @@ pub fn TopBar() -> impl IntoView {
             <div style="font-size: 1.1rem; font-family: monospace;">
                 {"<xsd "}
                 <span style="color: yellow;">{"⚡"}</span>
-                {">"}
+                {"> convert"}
             </div>
             { /* Right: Icon Links */ }
             <div style="display: flex; gap: 15px; align-items: center;">
