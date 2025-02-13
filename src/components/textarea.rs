@@ -1,5 +1,6 @@
 use leptos::prelude::*;
 use wasm_bindgen_futures::spawn_local;
+use gloo_timers::future::TimeoutFuture;
 
 #[component]
 pub fn InputTextArea(
@@ -20,6 +21,7 @@ pub fn InputTextArea(
 pub fn OutputTextArea(
     output_text: ReadSignal<String>,
 ) -> impl IntoView {
+    let (notification, set_notification) = signal(None::<String>);
     view! {
         <div style="position: relative; flex: 1; margin: 10px; max-height: 80vh;">
             <textarea
@@ -47,6 +49,10 @@ pub fn OutputTextArea(
                             let clipboard = window.navigator().clipboard();
                             let promise = clipboard.write_text(&text);
                             let _ = wasm_bindgen_futures::JsFuture::from(promise).await;
+
+                            set_notification.set(Some("Copied to clipboard!".to_string()));
+                            TimeoutFuture::new(2000).await;
+                            set_notification.set(None);
                         }
                     });
                 }
@@ -55,6 +61,27 @@ pub fn OutputTextArea(
                     <path d="M16 1H4C2.9 1 2 1.9 2 3V17H4V3H16V1ZM19 5H8C6.9 5 6 5.9 6 7V21C6 22.1 6.9 23 8 23H19C20.1 23 21 22.1 21 21V7C21 5.9 20.1 5 19 5ZM19 21H8V7H19V21Z"/>
                 </svg>
             </button>
+            {move || (move || {
+                if let Some(msg) = notification.get() {
+                    view! {
+                        // If there's a message, render the styled notification div with the message
+                        <div style="position: absolute; bottom: 10px; right: 10px;
+                                    background-color: rgba(85, 64, 64, 0.75); color: white;
+                                    padding: 5px 10px; border-radius: 5px;">
+                            {msg}
+                        </div>
+                    }
+                } else {
+                    view! {
+                        // Else, render a div with the same style attributes and an empty string as its child.
+                        <div style="position: absolute; bottom: 10px; right: 10px;
+                                    background-color: transparent; color: transparent;
+                                    padding: 5px 10px; border-radius: 5px;">
+                            {"".to_string()}
+                        </div>
+                    }
+                }
+            })()}
         </div>
     }
 }
