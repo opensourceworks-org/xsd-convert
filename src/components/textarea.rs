@@ -1,6 +1,7 @@
 use leptos::prelude::*;
 use wasm_bindgen_futures::spawn_local;
 use gloo_timers::future::TimeoutFuture;
+use crate::components::switch::Switch;
 
 #[component]
 pub fn InputTextArea(
@@ -22,26 +23,23 @@ pub fn OutputTextArea(
     output_text: ReadSignal<String>,
 ) -> impl IntoView {
     let (notification, set_notification) = signal(None::<String>);
+    let (word_wrap, set_word_wrap) = signal(true);
     view! {
         <div style="position: relative; flex: 1; margin: 10px; max-height: 80vh;">
             <textarea
-                style="width: 100%; height: 100%;"
+                style="position: absolute; left: 0; width: 100%; height: 100%; max-height: 80vh; z-index: 1;"
+                class=move || if word_wrap.get() { "word-wrap" } else { "" }
+                wrap=move || if word_wrap.get() { "soft" } else { "off" }
                 readonly
                 prop:value=output_text
                 placeholder="Transformed schema will appear here..."
             ></textarea>
-            <button
-                style="
-                    position: absolute;
-                    top: 1px;
-                    right: 1px;
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    padding: 2px;
-                    margin-top: 5px;
-                    margin-right: 5px;
-                "
+
+            <Switch
+                    checked=word_wrap on_toggle=set_word_wrap/>
+
+            <button class="text-area-copy-button"
+
                 on:click=move |_| {
                     let text = output_text.get();
                     spawn_local(async move {
