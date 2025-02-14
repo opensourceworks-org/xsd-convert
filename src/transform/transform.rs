@@ -33,8 +33,8 @@ impl FromStr for OutputFormat {
     }
 }
 
-pub fn transform_xsd(xsd_input: &str, output_format: &str) -> Result<String, Box<dyn std::error::Error>> {
-    let xsd_schema = parse_xsd_string(xsd_input, None)?;
+pub fn transform_xsd(xsd_input: &str, output_format: &str, lowercase: Option<bool>) -> Result<String, Box<dyn std::error::Error>> {
+    let xsd_schema = parse_xsd_string(xsd_input, None, lowercase)?;
     // web_sys::console::log_1(&format!("output_format at transforming: {:?}", &output_format).into());
 
 

@@ -19,7 +19,7 @@ pub fn InputTextArea(
                placeholder="Paste here or choose a local file with valid xsd content ..."
            ></textarea>
             <div style="position: absolute; bottom: 30px; left: 30px; z-index: 0;">
-                <Switch checked=word_wrap on_toggle=set_word_wrap/>
+                <Switch checked=word_wrap on_toggle=set_word_wrap label="word wrap" id="xsd-switch"/>
             </div>
         </div>
     }
@@ -42,7 +42,7 @@ pub fn OutputTextArea(
             ></textarea>
 
             <div style="position: absolute; bottom: 30px; right: 30px; z-index: 0;">
-                <Switch checked=word_wrap on_toggle=set_word_wrap/>
+                <Switch checked=word_wrap on_toggle=set_word_wrap label="word wrap" id="output-switch"/>
             </div>
 
             <button class="text-area-copy-button"

@@ -3,3 +3,4 @@ pub mod textarea;
 pub mod file_input;
 pub mod transform_controls;
 pub mod switch;
+pub mod lowercase_switch;

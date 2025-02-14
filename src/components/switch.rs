@@ -3,15 +3,18 @@ use leptos::wasm_bindgen::JsCast;
 use web_sys::HtmlInputElement;
 
 #[component]
-pub fn Switch(
+pub fn Switch<'a>(
     checked: ReadSignal<bool>,
     on_toggle: WriteSignal<bool>,
-) -> impl IntoView {
+    label: &'a str,
+    #[prop(optional)] id: Option<&'a str>,
+) -> impl IntoView + 'a{
+    let input_id = id.unwrap_or_else(|| "switch");
     view! {
 
         <div>
-            <label for="word-wrap-switch" style="margin-right: 15px;" >"Word Wrap"</label>
-            <label class="switch" id="word-wrap-switch">
+            <label for=input_id style="margin-right: 15px; font-size: larger;" >{label}</label>
+            <label class="switch" id=input_id>
 
                 <input
                     style="margin-left: 10px;"
