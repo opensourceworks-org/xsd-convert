@@ -8,13 +8,20 @@ pub fn InputTextArea(
     input_text: ReadSignal<String>,
     on_input: impl Fn(String) -> () + Send + Sync + 'static,
 ) -> impl IntoView {
+    let (word_wrap, set_word_wrap) = signal(true);
     view! {
-        <textarea
-            style="flex: 1; margin: 10px; max-height: 80vh;"
-            on:input=move |ev| on_input(event_target_value(&ev))
-            prop:value=input_text
-            placeholder="Paste here or choose a local file with valid xsd content ..."
-        ></textarea>
+        <div class="text-area-div">
+            <textarea
+                class=move || format!("text-area{}", if word_wrap.get() { " word-wrap" } else { "" })
+                wrap=move || if word_wrap.get() { "soft" } else { "off" }
+               on:input=move |ev| on_input(event_target_value(&ev))
+               prop:value=input_text
+               placeholder="Paste here or choose a local file with valid xsd content ..."
+           ></textarea>
+            <div style="position: absolute; bottom: 30px; left: 30px; z-index: 0;">
+                <Switch checked=word_wrap on_toggle=set_word_wrap/>
+            </div>
+        </div>
     }
 }
 
@@ -25,18 +32,18 @@ pub fn OutputTextArea(
     let (notification, set_notification) = signal(None::<String>);
     let (word_wrap, set_word_wrap) = signal(true);
     view! {
-        <div style="position: relative; flex: 1; margin: 10px; max-height: 80vh;">
+        <div class="text-area-div">
             <textarea
-                style="position: absolute; left: 0; width: 100%; height: 100%; max-height: 80vh; z-index: 1;"
-                class=move || if word_wrap.get() { "word-wrap" } else { "" }
+                class=move || format!("text-area{}", if word_wrap.get() { " word-wrap" } else { "" })
                 wrap=move || if word_wrap.get() { "soft" } else { "off" }
                 readonly
                 prop:value=output_text
                 placeholder="Transformed schema will appear here..."
             ></textarea>
 
-            <Switch
-                    checked=word_wrap on_toggle=set_word_wrap/>
+            <div style="position: absolute; bottom: 30px; right: 30px; z-index: 0;">
+                <Switch checked=word_wrap on_toggle=set_word_wrap/>
+            </div>
 
             <button class="text-area-copy-button"
 

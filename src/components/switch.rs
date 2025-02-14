@@ -9,7 +9,7 @@ pub fn Switch(
 ) -> impl IntoView {
     view! {
 
-        <div style="position: absolute; bottom: 30px; right: 30px; z-index: 0;">
+        <div>
             <label for="word-wrap-switch" style="margin-right: 15px;" >"Word Wrap"</label>
             <label class="switch" id="word-wrap-switch">
 
