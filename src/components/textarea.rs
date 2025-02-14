@@ -65,7 +65,7 @@ pub fn OutputTextArea(
                         // If there's a message, render the styled notification div with the message
                         <div style="position: absolute; bottom: 10px; right: 10px;
                                     background-color: rgba(85, 64, 64, 0.75); color: white;
-                                    padding: 5px 10px; border-radius: 5px;">
+                                    padding: 5px 10px; border-radius: 5px; z-index: 100;">
                             {msg}
                         </div>
                     }
