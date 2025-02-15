@@ -1,14 +1,14 @@
 use leptos::prelude::*;
 use wasm_bindgen_futures::spawn_local;
 use gloo_timers::future::TimeoutFuture;
-use crate::components::switch::Switch;
 
 #[component]
 pub fn InputTextArea(
     input_text: ReadSignal<String>,
     on_input: impl Fn(String) -> () + Send + Sync + 'static,
+    word_wrap: ReadSignal<bool>,
+
 ) -> impl IntoView {
-    let (word_wrap, set_word_wrap) = signal(true);
     view! {
         <div class="text-area-div">
             <textarea
@@ -18,9 +18,7 @@ pub fn InputTextArea(
                prop:value=input_text
                placeholder="Paste here or choose a local file with valid xsd content ..."
            ></textarea>
-            <div style="position: absolute; bottom: 30px; left: 30px; z-index: 0;">
-                <Switch checked=word_wrap on_toggle=set_word_wrap label="word wrap" id="xsd-switch"/>
-            </div>
+
         </div>
     }
 }
@@ -28,9 +26,9 @@ pub fn InputTextArea(
 #[component]
 pub fn OutputTextArea(
     output_text: ReadSignal<String>,
+    word_wrap: ReadSignal<bool>,
 ) -> impl IntoView {
     let (notification, set_notification) = signal(None::<String>);
-    let (word_wrap, set_word_wrap) = signal(true);
     view! {
         <div class="text-area-div">
             <textarea
@@ -41,12 +39,7 @@ pub fn OutputTextArea(
                 placeholder="Transformed schema will appear here..."
             ></textarea>
 
-            <div style="position: absolute; bottom: 30px; right: 30px; z-index: 0;">
-                <Switch checked=word_wrap on_toggle=set_word_wrap label="word wrap" id="output-switch"/>
-            </div>
-
             <button class="text-area-copy-button"
-
                 on:click=move |_| {
                     let text = output_text.get();
                     spawn_local(async move {
@@ -69,7 +62,6 @@ pub fn OutputTextArea(
             {move || (move || {
                 if let Some(msg) = notification.get() {
                     view! {
-                        // If there's a message, render the styled notification div with the message
                         <div style="position: absolute; bottom: 10px; right: 10px;
                                     background-color: rgba(85, 64, 64, 0.75); color: white;
                                     padding: 5px 10px; border-radius: 5px; z-index: 100;">
@@ -78,7 +70,6 @@ pub fn OutputTextArea(
                     }
                 } else {
                     view! {
-                        // Else, render a div with the same style attributes and an empty string as its child.
                         <div style="position: absolute; bottom: 10px; right: 10px;
                                     background-color: transparent; color: transparent;
                                     padding: 5px 10px; border-radius: 5px;">

@@ -30,7 +30,7 @@ pub fn TransformControls(
                 <option value="spark">{"Spark"}</option>
             </select>
             <button
-                style="height: 100%;"
+                style="height: 40px; margin-left: 0px;"
                 on:click=move |_| on_transform()
             >
                 {"Transform"}

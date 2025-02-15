@@ -81,3 +81,6 @@ You'll need a few things to get going.  And an additional step if you're on Appl
 - [ ] Save output to file
 - [ ] timestamp overrides for timezone/unit (ms, µs, ns)
 - [x] option to lowercase column names
+- [ ] word wrap on textarea 
+- [ ] markdown output
+- [ ] csv output
