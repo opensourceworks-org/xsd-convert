@@ -4002,9 +4002,9 @@ checksum = "cfe53a6657fd280eaa890a3bc59152892ffa3e30101319d168b781ed6529b049"
 
 [[package]]
 name = "yaxp-core"
-version = "0.1.4"
+version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6d5f946de75eae04c333e50e3dd4ee69575065791958663e90f441ac24764733"
+checksum = "c3864e3320eaf89e06414416113e5c5a14869c738e0982383d39b01517f7d1ce"
 dependencies = [
  "arrow",
  "encoding_rs",
