@@ -11,7 +11,7 @@ pub fn FileInput(
     view! {
         <input
             type="file"
-            style="height: 100%; max-width: 50vh; width: fit-content;"
+            style="position: relative; top: 4px; max-width: 50vh; width: fit-content;"
             on:change=move |ev| {
                 let input: HtmlInputElement = ev.target().unwrap().unchecked_into();
                 if let Some(files) = input.files() {
