@@ -69,7 +69,7 @@ pub fn transform_xsd(xsd_input: &str, output_format: &str, lowercase: Option<boo
                 },
                 OutputFormat::Avro => {
                     let avro_schema = xsd_schema.to_avro()?;
-                    Ok(serde_json::to_string(&avro_schema)?)
+                    Ok(serde_json::to_string_pretty(&avro_schema)?)
                 },
                 OutputFormat::DuckDB => {
                     let duckdb_schema = xsd_schema.to_duckdb_schema();

@@ -1,6 +1,33 @@
 use leptos::prelude::*;
 use wasm_bindgen_futures::spawn_local;
 use gloo_timers::future::TimeoutFuture;
+use leptos::wasm_bindgen::JsValue;
+use leptos::wasm_bindgen::JsCast;
+use leptos::html::Div;
+
+fn highlightify(raw_code: &str, language: &str) -> String {
+    let window = web_sys::window().expect("no global window exists");
+    let prism = js_sys::Reflect::get(&window, &JsValue::from_str("Prism"))
+        .expect("Prism not found");
+    let highlight_fn = js_sys::Reflect::get(&prism, &JsValue::from_str("highlight"))
+        .expect("Prism.highlight not found")
+        .dyn_into::<js_sys::Function>()
+        .expect("Prism.highlight is not a function");
+
+    let args = js_sys::Array::new();
+    args.push(&JsValue::from_str(&raw_code));
+    let languages = js_sys::Reflect::get(&prism, &JsValue::from_str("languages"))
+        .expect("Prism.languages not found");
+    let grammar = js_sys::Reflect::get(&languages, &JsValue::from_str(&language))
+        .expect("grammar not found for language");
+    args.push(&grammar);
+    args.push(&JsValue::from_str(&language));
+
+    let result = highlight_fn
+        .apply(&prism, &args)
+        .expect("highlight.apply failed");
+    result.as_string().unwrap_or(raw_code.to_string())
+}
 
 #[component]
 pub fn InputTextArea(
@@ -9,8 +36,21 @@ pub fn InputTextArea(
     word_wrap: ReadSignal<bool>,
 
 ) -> impl IntoView {
+    let language = "xml";
+    let highlighted = Memo::new(move |_| {
+        let raw_code = input_text.get();
+        highlightify(&raw_code, &language)
+
+    });
     view! {
         <div class="text-area-div">
+            <pre class="code-style">
+                <code style="display: block; width: 2000px; max-width: 100%;"
+                      class=move || format!("{}language-{}", if word_wrap.get() { "word-wrap " } else { "" }, language)
+                      inner_html= move || highlighted.get()
+
+                ></code>
+            </pre>
             <textarea
                 class=move || format!("text-area{}", if word_wrap.get() { " word-wrap" } else { "" })
                 wrap=move || if word_wrap.get() { "soft" } else { "off" }
@@ -29,8 +69,21 @@ pub fn OutputTextArea(
     word_wrap: ReadSignal<bool>,
 ) -> impl IntoView {
     let (notification, set_notification) = signal(None::<String>);
+    let language = "json";
+    let highlighted = Memo::new(move |_| {
+        let raw_code = output_text.get();
+        highlightify(&raw_code, &language)
+    });
+
     view! {
         <div class="text-area-div">
+            <pre class="code-style">
+                <code style="display: block; width: 2000px; max-width: 100%;"
+                      class=move || format!("{}language-{}", if word_wrap.get() { "word-wrap " } else { "" }, language)
+                      inner_html= move || highlighted.get()
+
+                ></code>
+            </pre>
             <textarea
                 class=move || format!("text-area{}", if word_wrap.get() { " word-wrap" } else { "" })
                 wrap=move || if word_wrap.get() { "soft" } else { "off" }
