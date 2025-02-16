@@ -6,7 +6,7 @@ use crate::components::textarea::{InputTextArea, OutputTextArea};
 use crate::components::top_bar::TopBar;
 use crate::components::transform_controls::TransformControls;
 use transform::transform::transform_xsd;
-use crate::components::switch::Switch;
+use crate::components::switch::{Switch, SwitchLabelText};
 
 mod components;
 mod pages;
@@ -35,6 +35,18 @@ pub fn App() -> impl IntoView {
         set_output_text.set(transformed_text);
     };
 
+    let lowercase_label = SwitchLabelText::new(
+        "Lowercase Columns".to_string(),
+        "Lowercase".to_string(),
+        "LC".to_string(),
+    );
+
+    let word_wrap_label = SwitchLabelText::new(
+        "Word-wrap".to_string(),
+        "Wrap".to_string(),
+        "WW".to_string(),
+    );
+
     view! {
         <Html />
         <Meta charset="UTF-8" />
@@ -53,8 +65,8 @@ pub fn App() -> impl IntoView {
 
             <div class="footer-bar">
                 <FileInput on_file_load=set_input_text.clone() />
-                <Switch checked=to_lowercase on_toggle=set_to_lowercase label="Lowercase Columns" id="lowercase-switch"/>
-                <Switch checked=word_wrap on_toggle=set_word_wrap label="Word-wrap" id="word-wrap-switch"/>
+                <Switch checked=to_lowercase on_toggle=set_to_lowercase label=lowercase_label id="lowercase-switch"/>
+                <Switch checked=word_wrap on_toggle=set_word_wrap label=word_wrap_label id="word-wrap-switch"/>
                 <TransformControls selected_action=selected_action
                                 on_action_change=set_selected_action
                                 on_transform=transform_text/>
