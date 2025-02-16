@@ -3,7 +3,6 @@ use wasm_bindgen_futures::spawn_local;
 use gloo_timers::future::TimeoutFuture;
 use leptos::wasm_bindgen::JsValue;
 use leptos::wasm_bindgen::JsCast;
-use leptos::html::Div;
 
 fn highlightify(raw_code: &str, language: &str) -> String {
     let window = web_sys::window().expect("no global window exists");

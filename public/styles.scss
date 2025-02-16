@@ -105,7 +105,9 @@ button {
   height: 100%;
   max-height: 80vh;
   color: transparent;
-  z-index: 0
+  z-index: 0;
+  overflow: hidden;
+  resize: none;
 }
 
 .code-style {
