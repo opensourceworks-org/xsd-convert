@@ -6,15 +6,12 @@ pub fn TopBar() -> impl IntoView {
     view! {
 
         <div class="top-bar">
-            { /* Left: Branding */ }
             <div style="font-size: 1.1rem; font-family: monospace;">
                 {"<xsd "}
                 <span style="color: yellow;">{"⚡"}</span>
                 {"> convert"}
             </div>
-            { /* Right: Icon Links */ }
             <div style="display: flex; gap: 15px; align-items: center;">
-                { /* Python (PyPI) Link with Python Logo */ }
                 <a
                     href="https://pypi.org/project/pyaxp/"
                     target="_blank"
@@ -27,7 +24,6 @@ pub fn TopBar() -> impl IntoView {
                         style="height: 24px; width: auto;"
                     />
                 </a>
-                { /* Rust (crates.io) Link with Rust Logo */ }
                 <a
                     href="https://crates.io/crates/yaxp-common"
                     target="_blank"
@@ -64,7 +60,6 @@ pub fn TopBar() -> impl IntoView {
                         style="height: 24px; width: auto;"
                     />
                 </a>
-                { /* GitHub Link with Inline SVG Icon */ }
                 <a
                     href="https://github.com/opensourceworks-org/xsd-convert/blob/main/README.md"
                     target="_blank"

@@ -1,6 +1,5 @@
 use leptos::prelude::*;
 
-/// Default Home Page
 #[component]
 pub fn Home() -> impl IntoView {
     view! {
@@ -9,7 +8,6 @@ pub fn Home() -> impl IntoView {
                 <h1>"Uh oh! Something went wrong!"</h1>
 
                 <p>"Errors: "</p>
-                // Render a list of errors as strings - good for development purposes
                 <ul>
                     {move || {
                         errors
