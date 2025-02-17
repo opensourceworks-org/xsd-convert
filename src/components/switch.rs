@@ -52,7 +52,7 @@ pub fn Switch<'a>(
     view! {
 
         <div>
-            <label for=input_id style="margin-right: 15px; font-size: larger;" >
+            <label for=input_id style="margin-right: 15px; font-size: larger; color: #f1f3f5;" >
                 { move || {
                         if width.get() < 1000.0 {
                             label.small_text.clone()
