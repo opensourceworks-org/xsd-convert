@@ -3970,7 +3970,7 @@ checksum = "1e9df38ee2d2c3c5948ea468a8406ff0db0b29ae1ffde1bcf20ef305bcc95c51"
 
 [[package]]
 name = "xsd-convert"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "console_error_panic_hook",
  "console_log",
@@ -4003,9 +4003,9 @@ checksum = "cfe53a6657fd280eaa890a3bc59152892ffa3e30101319d168b781ed6529b049"
 
 [[package]]
 name = "yaxp-core"
-version = "0.1.5"
+version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c3864e3320eaf89e06414416113e5c5a14869c738e0982383d39b01517f7d1ce"
+checksum = "166e432a196c2a69c88f628036ada9d7d189d87128ddfa06fa7ee4824114771d"
 dependencies = [
  "arrow",
  "encoding_rs",
